@@ -1,6 +1,5 @@
 package com.bnta.chocolate.controllers;
 
-import com.bnta.chocolate.models.Chocolate;
 import com.bnta.chocolate.models.Estate;
 import com.bnta.chocolate.services.EstateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/estate")
+@RequestMapping(value = "/estates")
 public class EstateController {
 
     @Autowired
@@ -24,7 +23,14 @@ public class EstateController {
     }
 
     @PostMapping
-    public ResponseEntity<Estate> createEstate(@RequestBody Estate estate){
+    public ResponseEntity<Estate> createEstate(@RequestBody Estate estate) {
         estateService.saveEstate(estate);
         return new ResponseEntity<>(estate, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Estate> getEstate(@PathVariable long id) {
+        Estate estate = estateService.getEstateById(id).get();
+        return new ResponseEntity<>(estate, HttpStatus.OK);
+    }
 }

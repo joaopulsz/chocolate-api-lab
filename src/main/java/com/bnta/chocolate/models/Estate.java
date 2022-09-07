@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity(name = "estates")
 public class Estate {
 
@@ -20,7 +19,7 @@ public class Estate {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "chocolate")
+    @OneToMany(mappedBy = "estate")
     @JsonIgnoreProperties({"estate"})
     private List<Chocolate> chocolates;
 

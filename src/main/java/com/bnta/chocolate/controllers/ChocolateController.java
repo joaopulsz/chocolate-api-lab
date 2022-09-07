@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/chocolate")
+@RequestMapping(value = "/chocolates")
 public class ChocolateController {
 
     @Autowired
@@ -26,6 +26,12 @@ public class ChocolateController {
     public ResponseEntity<Chocolate> createChocolate(@RequestBody Chocolate chocolate) {
         chocolateService.saveChocolate(chocolate);
         return new ResponseEntity<>(chocolate, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Chocolate> getChocolate(@PathVariable long id) {
+        Chocolate chocolate = chocolateService.getChocolateById(id).get();
+        return new ResponseEntity<>(chocolate, HttpStatus.OK);
     }
 
 }
