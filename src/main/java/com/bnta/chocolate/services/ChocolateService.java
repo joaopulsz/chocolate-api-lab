@@ -22,7 +22,7 @@ public class ChocolateService {
         return chocolateRepository.findById(id);
     }
 
-    public Chocolate saveEstate(Chocolate chocolate) {
+    public Chocolate saveChocolate(Chocolate chocolate) {
         chocolateRepository.save(chocolate);
         return chocolate;
     }
