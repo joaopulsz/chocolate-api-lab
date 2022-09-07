@@ -1,5 +1,7 @@
 package com.bnta.chocolate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity(name = "chocolates")
@@ -16,6 +18,7 @@ public class Chocolate {
     private int cocoaPercentage;
 
     @ManyToOne
+    @JsonIgnoreProperties({"chocolate"})
     @JoinColumn(name = "estate_id")
     private Estate estate;
 
